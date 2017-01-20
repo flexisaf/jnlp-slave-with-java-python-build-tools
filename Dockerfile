@@ -1,15 +1,13 @@
 FROM cloudbees/jnlp-slave-with-java-build-tools
 
-LABEL maintainer "AbdulBasit KABIR"
+LABEL maintainer "AbdulBasit KABIR [abdulbasit.kabir@flexisaf,com]"
 
 RUN id
 USER root
 
 RUN apt-get update && apt-get install -y \
 	python \
-	python-setuptools \
 	python-dev \
-	build-essential \
 	libffi-dev \
 	libssl-dev \
 	python-pip
