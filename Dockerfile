@@ -5,12 +5,16 @@ LABEL maintainer "AbdulBasit KABIR"
 RUN id
 USER root
 
-RUN apt-get install python	--force-yes -y \
-	apt-get install python-setuptools --force-yes -y 	\
-	apt-get install build-essential --force-yes -y
+RUN apt-get update && apt-get install -y \
+	python \
+	python-setuptools \
+	python-dev \
+	build-essential \
+	libffi-dev \
+	libssl-dev \
+	python-pip
 	
-RUN pip install --upgrade pip  \
-	pip install --upgrade requests \
-	pip install fabric
+RUN pip install fabric --upgrade \
+	Requests --upgrade
 
 ENTRYPOINT ["/opt/bin/entry_point.sh", "/usr/local/bin/jenkins-slave"]
