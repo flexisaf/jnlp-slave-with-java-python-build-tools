@@ -1,6 +1,6 @@
 FROM cloudbees/jnlp-slave-with-java-build-tools
 
-LABEL maintainer "AbdulBasit KABIR [abdulbasit.kabir@flexisaf,com]"
+LABEL maintainer "AbdulBasit KABIR [abdulbasit.kabir@flexisaf.com]"
 
 RUN id
 USER root
