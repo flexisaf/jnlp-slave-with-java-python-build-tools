@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 	
 RUN pip install fabric --upgrade \
 	requests --upgrade \
-	aws --upgrade
+	aws --upgrade \
+	awscli --upgrade
   
 ENTRYPOINT ["/opt/bin/entry_point.sh", "/usr/local/bin/jenkins-slave"]
