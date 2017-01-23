@@ -13,8 +13,12 @@ RUN apt-get update && apt-get install -y \
 	python-pip
 	
 RUN pip install fabric --upgrade \
-	requests --upgrade \
-	aws --upgrade \
-	awscli --upgrade
-  
+	requests --upgrade
+
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" &&
+	unzip awscli-bundle.zip &&
+	sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+	
+USER jenkins
+
 ENTRYPOINT ["/opt/bin/entry_point.sh", "/usr/local/bin/jenkins-slave"]
