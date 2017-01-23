@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 	
 RUN pip install fabric --upgrade \
 	requests --upgrade \
+	cffi --upgrade \
 	&& pip uninstall awscli
 
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" \
