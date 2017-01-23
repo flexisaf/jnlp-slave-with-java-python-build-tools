@@ -1,6 +1,6 @@
 FROM cloudbees/jnlp-slave-with-java-build-tools
 
-LABEL maintainer "AbdulBasit KABIR [abdulbasit.kabir@flexisaf.com]"
+LABEL maintainer "AbdulBasit KABIR <abdulbasit.kabir@flexisaf.com>"
 
 RUN id
 USER root
@@ -13,11 +13,12 @@ RUN apt-get update && apt-get install -y \
 	python-pip
 	
 RUN pip install fabric --upgrade \
-	requests --upgrade
+	requests --upgrade \
+	&& pip uninstall awscli
 
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" &&
-	unzip awscli-bundle.zip &&
-	sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" \
+	&& unzip awscli-bundle.zip \
+	&& sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 	
 USER jenkins
 
